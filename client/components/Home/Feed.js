@@ -19,7 +19,7 @@ function Feed() {
                 <div className={style.headerTitle}>Home</div>
                 <BsStars />
             </div>
-            <TweetBox/>
+            <TweetBox />
         </div>
     )
 }
