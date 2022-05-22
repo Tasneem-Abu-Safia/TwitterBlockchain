@@ -3,8 +3,30 @@
 @tailwind utilities;
 
 .w-screen {
-     width: 100%; 
+     width: 100%;
 }
+
 .h-screen {
      height: 100%;
+}
+
+.w-2\/3 {
+     width: 86%;
+}
+
+.mr-28 {
+     margin-right: 2rem;
+}
+
+.mr-2 {
+     margin-right: 2.5rem;
+     height: 20px;
+     width: 20px;
+
+
+}
+
+.mb-6 {
+     margin-top: 0.88rem;
+     margin-bottom: 1.5rem;
 }

@@ -1,10 +1,5 @@
 export const news = [
-    {
-      category: 'Clever Programmer • LIVE',
-      title: 'CP is live on YouTube!',
-      image:
-        'https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/themes/284832/settings_images/rLlCifhXRJiT0RoN2FjK_Logo_roundbackground_black.png',
-    },
+ 
     {
       category: 'Databases • Trending',
       title:
@@ -26,12 +21,7 @@ export const news = [
   ]
   
   export const whoToFollow = [
-    {
-      name: 'Rafeh Qazi',
-      handle: '@cleverqazi',
-      avatar:
-        'https://pbs.twimg.com/profile_images/1472075657920221184/JhAI3WGm_400x400.jpg',
-    },
+  
     {
       name: 'David Rakosi',
       handle: '@0xDavidRakosi',
