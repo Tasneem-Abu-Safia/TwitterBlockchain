@@ -1,11 +1,11 @@
 {
   "root": true,
+  "api": {
+    "projectId": "088f5bzv",
+    "dataset": "production"
+  },
   "project": {
     "name": "twitter-blockchain-App"
-  },
-  "api": {
-    "projectId": "t6a4d9yq",
-    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",

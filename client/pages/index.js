@@ -39,14 +39,14 @@ const Home = () => {
 
   const userLoggedIn = (
     <div className={style.content}>
-      <Sidebar />
+      <Sidebar initialSelectedIcon={'Home'} />
       <Feed />
       <Widgets />
     </div>
   )
 
   const noUserFound = (
-    <div className={style.loginContainer} style = "     padding-bottom: 16.2%;    ">
+    <div className={style.loginContainer}>
       <Image src={metamaskLogo} width={200} height={200} />
       <div
         className={style.walletConnectButton}
@@ -85,7 +85,7 @@ const Home = () => {
 
   const loading = (
     <div className={style.loginContainer}>
-      <div className={style.loginContent} >Loading...</div>
+      <div className={style.loginContent}>Loading...</div>
     </div>
   )
 
