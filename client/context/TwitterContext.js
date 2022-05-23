@@ -37,6 +37,8 @@ export const TwitterProvider = ({ children }) => {
     } catch (err) {
       router.push('/')
       setAppStatus('error')
+
+
     }
   }
 
@@ -63,13 +65,15 @@ export const TwitterProvider = ({ children }) => {
       }
     } catch (err) {
       setAppStatus('error')
+
+
     }
   }
   /**
   * Creates an account in Sanity DB if the user does not already have one
   * @param {String} userAddress Wallet address of the currently logged in user
   */
-   const createUserAccount = async (userAddress = currentAccount) => {
+  const createUserAccount = async (userAddress = currentAccount) => {
     if (!window.ethereum) return setAppStatus('noMetaMask')
     try {
       const userDoc = {
@@ -88,12 +92,19 @@ export const TwitterProvider = ({ children }) => {
     } catch (error) {
       router.push('/')
       setAppStatus('error')
+      console.log('errororo');
+
     }
   }
 
 
   return (
-    <TwitterContext.Provider value={{ appStatus, currentAccount, connectWallet }}>
+    <TwitterContext.Provider
+     value={{ 
+      appStatus,
+      currentAccount,
+      connectWallet
+       }}>
       {children}
     </TwitterContext.Provider>
   )
