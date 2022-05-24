@@ -82,7 +82,7 @@ export const TwitterProvider = ({ children }) => {
         name: 'Unnamed',
         isProfileImageNft: false,
         profileImage:
-          'https://about.twitter.com/content/dam/about-twitter/en/brand-toolkit/brand-download-img-1.jpg.twimg.1920.jpg',
+            'https://about.twitter.com/content/dam/about-twitter/en/brand-toolkit/brand-download-img-1.jpg.twimg.1920.jpg',
         walletAddress: userAddress,
       }
 
@@ -132,8 +132,8 @@ export const TwitterProvider = ({ children }) => {
      */
     sanityResponse.forEach(async item => {
       const profileImageUrl = await getNftProfileImage(
-        item.author.profileImage,
-        item.author.isProfileImageNft,
+          item.author.profileImage,
+          item.author.isProfileImageNft,
       )
 
       if (item.author.isProfileImageNft) {
@@ -176,8 +176,8 @@ export const TwitterProvider = ({ children }) => {
     const response = await client.fetch(query)
 
     const profileImageUri = await getNftProfileImage(
-      response[0].profileImage,
-      response[0].isProfileImageNft,
+        response[0].profileImage,
+        response[0].isProfileImageNft,
     )
 
     setCurrentUser({
@@ -191,20 +191,20 @@ export const TwitterProvider = ({ children }) => {
   }
 
   return (
-    <TwitterContext.Provider
-      value={{
-        appStatus,
-        currentAccount,
-        connectWallet,
-        tweets,
-        fetchTweets,
-        setAppStatus,
-        getNftProfileImage,
-        currentUser,
-        getCurrentUserDetails,
-      }}
-    >
-      {children}
-    </TwitterContext.Provider>
+      <TwitterContext.Provider
+          value={{
+            appStatus,
+            currentAccount,
+            connectWallet,
+            tweets,
+            fetchTweets,
+            setAppStatus,
+            getNftProfileImage,
+            currentUser,
+            getCurrentUserDetails,
+          }}
+      >
+        {children}
+      </TwitterContext.Provider>
   )
 }

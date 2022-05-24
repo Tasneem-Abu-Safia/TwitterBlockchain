@@ -9,7 +9,9 @@ import { HiOutlineMail, HiMail } from 'react-icons/hi'
 import { FaRegListAlt, FaHashtag, FaBell } from 'react-icons/fa'
 import { CgMoreO } from 'react-icons/cg'
 import { VscTwitter } from 'react-icons/vsc'
+import  Modal  from 'react-modal'
 import { customStyles } from '../lib/constants'
+import ProfileImageMinter from './profile/mintingModal/ProfileImageMinter'
 import {
   BsBookmark,
   BsBookmarkFill,
@@ -114,7 +116,7 @@ function Sidebar({ initialSelectedIcon }: SidebarProps) {
           />
         </div>
         <div className={style.profileRight}>
-          <div className={style.details}  onClick={() =>
+          <div className={style.details} onClick={() =>
             router.push('/profile')
           }>
             <div className={style.name}>{currentUser.name}</div>
@@ -128,7 +130,13 @@ function Sidebar({ initialSelectedIcon }: SidebarProps) {
         </div>
       </div>
 
-     
+      <Modal
+        isOpen={Boolean(router.query.mint)}
+        onRequestClose={() => router.back()}
+        style={customStyles}
+      >
+        <ProfileImageMinter />
+      </Modal>
     </div>
   )
 }
