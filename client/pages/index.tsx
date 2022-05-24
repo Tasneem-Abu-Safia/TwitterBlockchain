@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { TwitterContext } from '../context/TwitterContext'
-import Feed from '../components/home/Feed'
+import Feed from '../components/Home/Feed'
 import Sidebar from '../components/Sidebar'
 import Widgets from '../components/Widgets'
 import metamaskLogo from '../assets/metamask.png'

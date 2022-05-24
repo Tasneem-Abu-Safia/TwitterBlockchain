@@ -1,20 +1,22 @@
-import Link from 'next/link'
+import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { VscTwitter } from 'react-icons/vsc'
+import { TwitterContext } from '../context/TwitterContext'
 import SidebarOption from './SidebarOption'
-import { useState } from 'react'
 import { RiHome7Line, RiHome7Fill, RiFileList2Fill } from 'react-icons/ri'
 import { BiHash } from 'react-icons/bi'
 import { FiBell, FiMoreHorizontal } from 'react-icons/fi'
 import { HiOutlineMail, HiMail } from 'react-icons/hi'
 import { FaRegListAlt, FaHashtag, FaBell } from 'react-icons/fa'
 import { CgMoreO } from 'react-icons/cg'
+import { VscTwitter } from 'react-icons/vsc'
+import { customStyles } from '../lib/constants'
 import {
   BsBookmark,
   BsBookmarkFill,
   BsPerson,
   BsPersonFill,
 } from 'react-icons/bs'
+
 const style = {
   wrapper: `flex-[0.7] px-8 flex flex-col`,
   twitterIconContainer: `text-3xl m-4`,
@@ -30,12 +32,15 @@ const style = {
   moreContainer: `flex items-center mr-2`,
 }
 
+interface SidebarProps {
+  initialSelectedIcon: string
+}
 
+function Sidebar({ initialSelectedIcon }: SidebarProps) {
+  const [selected, setSelected] = useState<String>(initialSelectedIcon)
+  const { currentAccount, currentUser } = useContext(TwitterContext)
+  const router = useRouter()
 
-
-
-function Sidebar({ initialSelectedIcon = 'Home' }) {
-  const [selected, setSelected] = useState(initialSelectedIcon)
   return (
     <div className={style.wrapper}>
       <div className={style.twitterIconContainer}>
@@ -86,7 +91,7 @@ function Sidebar({ initialSelectedIcon = 'Home' }) {
           setSelected={setSelected}
           redirect={'/profile'}
         />
-        <SidebarOption Icon={CgMoreO} text='More' setSelected={setSelected} />
+        <SidebarOption Icon={CgMoreO} text='More' />
         <div
           onClick={() =>
             router.push(`${router.pathname}/?mint=${currentAccount}`)
@@ -95,21 +100,26 @@ function Sidebar({ initialSelectedIcon = 'Home' }) {
         >
           Mint
         </div>
-      
-
-
+      </div>
       <div className={style.profileButton}>
         <div className={style.profileLeft}>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV610YnaFfeZH8HA6x1dXRxsKQ5I40A8WAZQ&usqp=CAU"
+            src={currentUser.profileImage}
             alt='profile'
-            className={style.profileImage}/>
+            className={
+              currentUser.isProfileImageNft
+                ? `${style.profileImage} smallHex`
+                : style.profileImage
+            }
+          />
         </div>
         <div className={style.profileRight}>
-          <div className={style.details}>
-            <div className={style.name}>Tasneem</div>
+          <div className={style.details}  onClick={() =>
+            router.push('/profile')
+          }>
+            <div className={style.name}>{currentUser.name}</div>
             <div className={style.handle}>
-              80x22...5xdf2
+              @{currentAccount.slice(0, 6)}...{currentAccount.slice(39)}
             </div>
           </div>
           <div className={style.moreContainer}>
@@ -118,14 +128,9 @@ function Sidebar({ initialSelectedIcon = 'Home' }) {
         </div>
       </div>
 
-    </div>
+     
     </div>
   )
 }
-
-
-
-
-
 
 export default Sidebar
